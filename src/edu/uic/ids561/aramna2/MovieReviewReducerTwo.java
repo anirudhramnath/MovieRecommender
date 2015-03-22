@@ -33,8 +33,10 @@ public class MovieReviewReducerTwo extends MapReduceBase implements Reducer<Text
 				currentDotProduct *= Integer.parseInt(s);
 			}
 			
+			// calculating the dot product
 			dotProduct += currentDotProduct;
 			
+			// calculating the magnitudes
 			magnitude_x += Integer.parseInt(ratingValues[0]) * Integer.parseInt(ratingValues[0]);
 			magnitude_y += Integer.parseInt(ratingValues[1]) * Integer.parseInt(ratingValues[1]);
 			
@@ -42,10 +44,11 @@ public class MovieReviewReducerTwo extends MapReduceBase implements Reducer<Text
 			
 		}
 		
+		// write to output only if more than one pair of ratings is found
 		if(cnt > 1){
+			// calculating cosine similarity
 			cosineSimilarity =  dotProduct;
 			cosineSimilarity /= Math.sqrt(magnitude_x)*Math.sqrt(magnitude_y);
-			
 			output.collect(key, new Text(String.valueOf(cosineSimilarity)));
 		}
 		

@@ -25,12 +25,14 @@ public class MovieReviewMapperTwo extends MapReduceBase implements Mapper<Text, 
 			movieWithRating[i][1] = values[i].split(",")[1];
 		}
 		
+		// find combinations of movies and ratings
 		for(int i=0 ; i<movieWithRating.length-1 ; i++){
 			for(int j=i+1 ; j<movieWithRating.length ; j++){
 				String[] movieList = {movieWithRating[i][0], movieWithRating[j][0]};
 				
 				String temp = movieList[0];
 				
+				// sort the keys to ensure that same keys go to the same mapper
 				Arrays.sort(movieList);
 				
 				if(temp.equals(movieList[0])){

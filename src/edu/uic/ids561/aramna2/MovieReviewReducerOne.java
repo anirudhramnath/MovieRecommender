@@ -18,6 +18,7 @@ public class MovieReviewReducerOne extends MapReduceBase implements Reducer<Text
 			
 		StringBuffer invertedIndex = new StringBuffer();
 		
+		// creating inverted index
 		while(values.hasNext()){
 			Text currentVal = (Text) values.next();
 			
